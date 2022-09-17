@@ -28,7 +28,7 @@ function App() {
               <Route path="/blogposts">
               <BlogoverviewPage />
               </Route>
-              <Route path="/blogpost/:blogId">
+              <Route path="/blog/:blogId">
                   <BlogpostPage />
               </Route>
           </Switch>

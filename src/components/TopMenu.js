@@ -16,7 +16,7 @@ function TopMenu() {
                         <NavLink to="/blogposts" activeClassName="active-link">Blogoverview</NavLink>
                     </li>
                     <li>
-                        <NavLink to="/blogpost/:blogId" activeClassName="active-link">Blogpost</NavLink>
+                        <NavLink to="/blog/:blogId" activeClassName="active-link">Blogpost</NavLink>
                     </li>
                 </ul>
             </div>
