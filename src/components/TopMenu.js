@@ -5,28 +5,22 @@ function TopMenu() {
     return(
         <nav>
             <div className="nav-container">
-                <h4>Bloggingplatform</h4>
                 <ul>
                     <li>
-                        <NavLink to="/" exact activeClassName="active-link" Home></NavLink>
+                        <NavLink to="/" activeClassName="active-link" Home></NavLink>
                     </li>
                     <li>
-                        <NavLink to="/login" exact activeClassName="active-link">Login</NavLink>
+                        <NavLink to="/login" activeClassName="active-link">Login</NavLink>
                     </li>
                     <li>
-                        <NavLink to="/blog-overview" exact activeClassName="active-link">Blogoverview</NavLink>
+                        <NavLink to="/blogposts" activeClassName="active-link">Blogoverview</NavLink>
                     </li>
                     <li>
-                        <NavLink to="/blog-post" exact activeClassName="active-link">Blogpost</NavLink>
+                        <NavLink to="/blogpost/:blogId" activeClassName="active-link">Blogpost</NavLink>
                     </li>
-
                 </ul>
-
-
             </div>
-
         </nav>
-
     )
 
 }

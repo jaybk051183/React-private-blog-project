@@ -1,4 +1,4 @@
-import React from 'react';
+import {useState} from 'react';
 import TopMenu from './components/TopMenu';
 import HomePage from './pages/Home';
 import LoginPage from './pages/Login';
@@ -19,16 +19,16 @@ function App() {
       <Router>
           <TopMenu/>
           <Switch>
-              <Route path="/">
+              <Route exact path="/">
                   <HomePage />
               </Route>
               <Route path="/login">
               <LoginPage />
               </Route>
-              <Route path="blog-overview">
+              <Route path="/blogposts">
               <BlogoverviewPage />
               </Route>
-              <Route path="blog-post">
+              <Route path="/blogpost/:blogId">
                   <BlogpostPage />
               </Route>
           </Switch>
