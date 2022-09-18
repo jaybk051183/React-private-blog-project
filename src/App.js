@@ -15,30 +15,25 @@ import PrivateRoute from "./components/PrivateRoute";
 function App() {
   // We houden in de state bij of iemand is "ingelogd" (simpele versie)
   const [isAuthenticated, toggleIsAuthenticated ] = useState(false);
+  const [firstName, setFirstName] = useState("");
+  const [password, setPassword] = useState("");
 
   return (
       <Router>
-          <TopMenu/>
-          {isAuthenticated === true && <p>Je bent ingelogd</p>}
-          {isAuthenticated === true ? <p>Je bent ingelogd</p> : <p>Je bent niet ingelogd</p>}
-
+          <TopMenu isAuthenticated={isAuthenticated} toggleAuthenticated={toggleIsAuthenticated}/>
           <Switch>
               <Route exact path="/">
                   <HomePage />
               </Route>
-
               <Route exact path="/login">
-                  <LoginPage/>
+                  <LoginPage isAuthenticated={isAuthenticated} firstName={firstName} setFirstname={setFirstName} password={password} setPassword={setPassword} toggleAuthenticated={toggleIsAuthenticated}/>
               </Route>
-
-              <PrivateRoute exact path="/blogposts" auth={isAuthenticated}>
+              <PrivateRoute path="/blogposts" isAuthenticated={isAuthenticated}>
                   <BlogoverviewPage />
               </PrivateRoute>
-
-              <PrivateRoute exact path="/blog/:blogId" auth={isAuthenticated}>
+              <PrivateRoute path="/blog/:blogId" isAuthenticated={isAuthenticated}>
                   <BlogpostPage />
               </PrivateRoute>
-
           </Switch>
       </Router>
   );

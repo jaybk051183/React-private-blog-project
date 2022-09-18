@@ -4,7 +4,6 @@ import {NavLink} from "react-router-dom";
 function TopMenu() {
     return(
         <nav>
-            <div className="nav-container">
                 <ul>
                     <li>
                         <NavLink to="/" activeClassName="active-link" Home></NavLink>
@@ -19,7 +18,6 @@ function TopMenu() {
                         <NavLink to="/blog/:blogId" activeClassName="active-link">Blogpost</NavLink>
                     </li>
                 </ul>
-            </div>
         </nav>
     )
 

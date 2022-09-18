@@ -1,21 +1,26 @@
-import React, {useState} from "react";
+import React from "react";
 import { useHistory } from 'react-router-dom';
+import users from '../data/users.json';
 
-function Login() {
+function Login({toggleAuthenticated}) {
     const history = useHistory();
     function handleClick() {
-        history.push("/blogposts");
+        toggleAuthenticated(true);
+        history.push("/");
+
     }
     return(
-        <>
+        <section>
         <h1>Login pagina</h1>
         <h2>Druk op de knop om in the loggen!</h2>
+            <input type="text" onSubmit={toggleAuthenticated}/>
+            <input type="text" onSubmit={toggleAuthenticated}/>
         <button
             type="button"
             onClick={handleClick}>
             Login
         </button>
-        </>
+        </section>
     )
 }
 export default Login;
