@@ -10,6 +10,7 @@ import {
     Switch,
     Route,
 } from 'react-router-dom';
+import PrivateRoute from "./components/PrivateRoute";
 
 function App() {
   // We houden in de state bij of iemand is "ingelogd" (simpele versie)
@@ -18,23 +19,28 @@ function App() {
   return (
       <Router>
           <TopMenu/>
+          {isAuthenticated === true && <p>Je bent ingelogd</p>}
+          {isAuthenticated === true ? <p>Je bent ingelogd</p> : <p>Je bent niet ingelogd</p>}
+
           <Switch>
               <Route exact path="/">
                   <HomePage />
               </Route>
-              <Route path="/login">
-              <LoginPage />
+
+              <Route exact path="/login">
+                  <LoginPage/>
               </Route>
-              <Route path="/blogposts">
-              <BlogoverviewPage />
-              </Route>
-              <Route path="/blog/:blogId">
+
+              <PrivateRoute exact path="/blogposts" auth={isAuthenticated}>
+                  <BlogoverviewPage />
+              </PrivateRoute>
+
+              <PrivateRoute exact path="/blog/:blogId" auth={isAuthenticated}>
                   <BlogpostPage />
-              </Route>
+              </PrivateRoute>
+
           </Switch>
       </Router>
   );
-
 }
-
 export default App;
