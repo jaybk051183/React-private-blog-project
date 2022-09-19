@@ -1,25 +1,40 @@
 import React from "react";
-import {NavLink} from "react-router-dom";
+import {NavLink, useHistory} from "react-router-dom";
 
-function TopMenu() {
+function TopMenu({isAuthenticated, toggleAuthenticated}) {
+    const history = useHistory();
+
+    function logOut(){
+        toggleAuthenticated(false);
+        history.push("/")
+    }
+
     return(
         <nav>
                 <ul>
                     <li>
-                        <NavLink to="/" activeClassName="active-link" Home></NavLink>
+                        <NavLink to="/" activeClassName="active-link">
+                            Home
+                        </NavLink>
                     </li>
+                    {isAuthenticated ===true ?
+                        <>
+                            <li>
+                                <NavLink to="/blogposts" activeClassName="active-link">Blogoverview</NavLink>
+                            </li>
+                            <li>
+                                <button type="button" onClick={logOut}>
+                                    Uitloggen
+                                </button>
+                            </li>
+                        </>
+                        :
                     <li>
                         <NavLink to="/login" activeClassName="active-link">Login</NavLink>
-                    </li>
-                    <li>
-                        <NavLink to="/blogposts" activeClassName="active-link">Blogoverview</NavLink>
-                    </li>
-                    <li>
-                        <NavLink to="/blog/:blogId" activeClassName="active-link">Blogpost</NavLink>
-                    </li>
+                    </li>}
                 </ul>
         </nav>
-    )
+    );
 
 }
 

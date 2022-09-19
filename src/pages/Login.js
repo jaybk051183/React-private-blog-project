@@ -6,7 +6,7 @@ function Login({toggleAuthenticated}) {
     const history = useHistory();
     function handleClick() {
         toggleAuthenticated(true);
-        history.push("/");
+        history.push("/blogposts");
 
     }
     return(
